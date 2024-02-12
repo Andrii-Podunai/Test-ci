@@ -30,29 +30,29 @@ test("check filters", async ({ pumaLandingPage, page }) => {
 
   await expect(pumaLandingPage.getChoosedFilter).toBeVisible();
 });
-// test("check autoloading in the page", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getNavigationMan.click();
-//   await page.waitForLoadState();
+test("check autoloading in the page", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getNavigationMan.click();
+  await page.waitForLoadState();
 
-//   await page.waitForTimeout(2000);
-//   const initialCount = await pumaLandingPage.getProductItem.count();
-//   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-//   await page.waitForFunction(
-//     (initialCount) =>
-//       document.querySelectorAll('[data-test-id="product-list-item"]').length >
-//       initialCount,
-//     initialCount
-//   );
+  await page.waitForTimeout(2000);
+  const initialCount = await pumaLandingPage.getProductItem.count();
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await page.waitForFunction(
+    (initialCount) =>
+      document.querySelectorAll('[data-test-id="product-list-item"]').length >
+      initialCount,
+    initialCount
+  );
 
-//   const finalCount = await pumaLandingPage.getProductItem.count();
-//   expect(finalCount).toBeGreaterThan(initialCount);
-// });
+  const finalCount = await pumaLandingPage.getProductItem.count();
+  expect(finalCount).toBeGreaterThan(initialCount);
+});
 
-// test("check modal of feedback", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getButtonFeedback.click();
+test("check modal of feedback", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getButtonFeedback.click();
 
-//   await expect(pumaLandingPage.getModal).toBeVisible();
-// });
+  await expect(pumaLandingPage.getModal).toBeVisible();
+});
 
 // test("check slider", async ({ pumaLandingPage, page }) => {
 //   // await page
@@ -82,34 +82,34 @@ test("check filters", async ({ pumaLandingPage, page }) => {
 //   await expect(boundingBoxBefore?.x !== boundingBoxAfter?.x).toBeTruthy();
 // });
 // //
-// test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
-//   await expect(pumaLandingPage.getModalLocation).toBeVisible();
-// });
+test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
+  await expect(pumaLandingPage.getModalLocation).toBeVisible();
+});
 
-// test("check Select a Location", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getButtonLocation.click();
-//   await pumaLandingPage.getInputLocation.fill("Ukraine");
-//   await pumaLandingPage.getSelectCountry.click();
+test("check Select a Location", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getButtonLocation.click();
+  await pumaLandingPage.getInputLocation.fill("Ukraine");
+  await pumaLandingPage.getSelectCountry.click();
 
-//   const expectedDomain = "ua.puma.com";
-//   const expectedPath = "/uk";
-//   await page.waitForURL("**/ua.puma.com/uk/");
+  const expectedDomain = "ua.puma.com";
+  const expectedPath = "/uk";
+  await page.waitForURL("**/ua.puma.com/uk/");
 
-//   const url = page.url();
+  const url = page.url();
 
-//   expect(
-//     url.includes(expectedDomain) && url.includes(expectedPath)
-//   ).toBeTruthy();
-// });
+  expect(
+    url.includes(expectedDomain) && url.includes(expectedPath)
+  ).toBeTruthy();
+});
 
-// test("check sale", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getButtonSale.click();
-//   const textDecoration = pumaLandingPage.getTextDecoration;
+test("check sale", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getButtonSale.click();
+  const textDecoration = pumaLandingPage.getTextDecoration;
 
-//   const expectedDecoration = await textDecoration.evaluate((element) =>
-//     window.getComputedStyle(element).getPropertyValue("text-decoration")
-//   );
+  const expectedDecoration = await textDecoration.evaluate((element) =>
+    window.getComputedStyle(element).getPropertyValue("text-decoration")
+  );
 
-//   await expect(expectedDecoration.includes("line-through")).toBeTruthy();
-//   await expect(textDecoration).toHaveCSS("text-decoration", expectedDecoration);
-// });
+  await expect(expectedDecoration.includes("line-through")).toBeTruthy();
+  await expect(textDecoration).toHaveCSS("text-decoration", expectedDecoration);
+});
