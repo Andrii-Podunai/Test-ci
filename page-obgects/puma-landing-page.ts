@@ -79,7 +79,9 @@ export class PumaLandingPage {
     this.getModalLocation = page.locator(
       '//*[@data-test-id="country-selector"]'
     );
-    this.getButtonLocation = page.locator('[data-test-id="select-location"]');
+    this.getButtonLocation = page.locator(
+      '//*[@data-test-id="select-location"]'
+    );
     this.getInputLocation = page.locator(
       '[data-test-id="location-selector-input"]'
     );
