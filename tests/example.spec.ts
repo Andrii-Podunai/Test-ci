@@ -1,5 +1,5 @@
 import { test, expect } from "../fixtures/puma-fixtures";
-import { PumaLandingPage } from "../page-obgects/puma-landing-page";
+// import { PumaLandingPage } from "../page-obgects/puma-landing-page";
 
 test("get started link", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getNavigationSport.click();
@@ -81,7 +81,7 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 
 //   await expect(boundingBoxBefore?.x !== boundingBoxAfter?.x).toBeTruthy();
 // });
-
+//
 test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
   await expect(pumaLandingPage.getModalLocation).toBeVisible();
 });
