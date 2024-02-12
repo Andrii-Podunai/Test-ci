@@ -28,6 +28,7 @@ export class PumaLandingPage {
   readonly getTextDecoration: Locator;
   readonly getButtonSale: Locator;
   readonly getCloseCoockieModal: Locator;
+  readonly getLinkInsta: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -96,6 +97,9 @@ export class PumaLandingPage {
     });
     this.getCloseCoockieModal = page.locator(
       '//*[@data-test-id="cookie-banner-close-btn"]'
+    );
+    this.getLinkInsta = page.locator(
+      '//*[@data-test-id="social-instagram-social-link"]'
     );
   }
   async goto() {

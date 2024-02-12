@@ -63,9 +63,24 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 
   await expect(isModalVisible).toBeTruthy();
 });
-// test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
-//   await expect(pumaLandingPage.getModalLocation).toBeVisible();
-// });
+test("check link instagram", async ({ pumaLandingPage, page, context }) => {
+  await pumaLandingPage.getLinkInsta.scrollIntoViewIfNeeded();
+
+  const visibilityCoockieModal =
+    await pumaLandingPage.getCloseCoockieModal.isVisible();
+  if (visibilityCoockieModal) {
+    await pumaLandingPage.getCloseCoockieModal.click();
+  }
+  const [newPage] = await Promise.all([
+    context.waitForEvent("page"), // чекаємо на відкриття нової вкладки
+    await pumaLandingPage.getLinkInsta.click(),
+  ]);
+  await newPage.waitForURL("**/*instagram.com*");
+
+  const domain = "instagram.com";
+  const url = newPage.url();
+  expect(url).toContain(domain);
+});
 // test("check slider", async ({ pumaLandingPage, page }) => {
 //   // await page
 //   //   .locator('[data-test-id="recommendation-product-carousel"]')
@@ -100,7 +115,6 @@ test("check Select a Location", async ({ pumaLandingPage, page }) => {
   const visibilityCoockieModal =
     await pumaLandingPage.getCloseCoockieModal.isVisible();
   if (visibilityCoockieModal) {
-    // await page.locator('//*[@data-test-id="close-btn"]').click();
     await pumaLandingPage.getCloseCoockieModal.click();
   }
 
