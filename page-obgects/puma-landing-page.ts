@@ -108,7 +108,7 @@ export class PumaLandingPage {
     this.getBlockCorusel = page.locator(
       '//*[@data-test-id="recommendation-product-carousel"]'
     );
-    this.getCloseBtnModal = page.locator('[data-test-id="close-btn"]');
+    this.getCloseBtnModal = page.locator('//*[@data-test-id="close-btn"]');
   }
   async goto() {
     await this.page.goto("https://us.puma.com/us/en");
