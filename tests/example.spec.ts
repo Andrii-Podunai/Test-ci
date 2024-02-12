@@ -100,7 +100,7 @@ test("check Select a Location", async ({ pumaLandingPage, page }) => {
   const visibilityCoockieModal =
     await pumaLandingPage.getCloseCoockieModal.isVisible();
   if (visibilityCoockieModal) {
-    await page.locator('//*[@data-test-id="close-btn"]').click();
+    // await page.locator('//*[@data-test-id="close-btn"]').click();
     await pumaLandingPage.getCloseCoockieModal.click();
   }
 
