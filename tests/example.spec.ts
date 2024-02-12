@@ -15,7 +15,7 @@ test("enter text", async ({ pumaLandingPage, page }) => {
 
   await page.waitForSelector("img", { state: "attached" });
   await expect(
-    page.locator('//*[@data-test-id="product-list-item-link"]')
+    page.locator('//*[@data-test-id="product-list-item-link"]').first()
   ).toBeVisible();
 });
 
