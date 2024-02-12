@@ -14,7 +14,9 @@ test("enter text", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getSearchClick.click();
 
   await page.waitForSelector("img", { state: "attached" });
-  await expect(page.getByLabel("Go to Defy Varsity Mid Women'")).toBeVisible();
+  await expect(
+    page.locator('//*[@data-test-id="product-list-item-link"]')
+  ).toBeVisible();
 });
 
 test("check user is not loginned", async ({ pumaLandingPage, page }) => {
