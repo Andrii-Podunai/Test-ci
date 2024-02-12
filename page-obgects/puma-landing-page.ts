@@ -63,6 +63,7 @@ export class PumaLandingPage {
     this.getProductItem = page.locator(
       '//*[@data-test-id="product-list-item"]'
     );
+
     this.getButtonFeedback = page.getByRole("button", { name: "FEEDBACK" });
     this.getModal = page.getByRole("dialog");
 
@@ -75,7 +76,9 @@ export class PumaLandingPage {
     this.getElementToScroll = page.getByRole("heading", {
       name: "EXPLORE LAMELO BALL’S",
     });
-    this.getModalLocation = page.locator('[data-test-id="country-selector"]');
+    this.getModalLocation = page.locator(
+      '//*[@data-test-id="country-selector"]'
+    );
     this.getButtonLocation = page.locator('[data-test-id="select-location"]');
     this.getInputLocation = page.locator(
       '[data-test-id="location-selector-input"]'
