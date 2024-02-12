@@ -1,5 +1,4 @@
 import { test, expect } from "../fixtures/puma-fixtures";
-// import { PumaLandingPage } from "../page-obgects/puma-landing-page";
 
 test("get started link", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getNavigationSport.click();
@@ -65,7 +64,7 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 
   await expect(isModalVisible).toBeTruthy();
 });
-test("check link instagram", async ({ pumaLandingPage, page, context }) => {
+test("check link instagram", async ({ pumaLandingPage, context }) => {
   await pumaLandingPage.getLinkInsta.scrollIntoViewIfNeeded();
 
   const visibilityCoockieModal =
@@ -74,7 +73,7 @@ test("check link instagram", async ({ pumaLandingPage, page, context }) => {
     await pumaLandingPage.getCloseCoockieModal.click();
   }
   const [newPage] = await Promise.all([
-    context.waitForEvent("page"), // чекаємо на відкриття нової вкладки
+    context.waitForEvent("page"),
     await pumaLandingPage.getLinkInsta.click(),
   ]);
   await newPage.waitForURL("**/*instagram.com*");
@@ -83,34 +82,25 @@ test("check link instagram", async ({ pumaLandingPage, page, context }) => {
   const url = newPage.url();
   expect(url).toContain(domain);
 });
-// test("check slider", async ({ pumaLandingPage, page }) => {
-//   // await page
-//   //   .locator('[data-test-id="recommendation-product-carousel"]')
-//   //   .scrollIntoViewIfNeeded();
-//   await page.evaluate(() => {
-//     if (page.locator('[data-test-id="recommendation-product-carousel"]')) {
-//       page
-//         .locator('[data-test-id="recommendation-product-carousel"]')
-//         .scrollIntoViewIfNeeded();
-//     }
-//   });
+test("check slider", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getFooter.scrollIntoViewIfNeeded();
 
-//   const boundingBoxBefore =
-//     await pumaLandingPage.getNewElementSlider.boundingBox();
+  const boundingBoxBefore = await pumaLandingPage.getNewElementSlider
+    .first()
+    .boundingBox();
 
-//   await pumaLandingPage.getsliderButton.scrollIntoViewIfNeeded();
-//   const arrowSlide = await pumaLandingPage.getsliderButton.first();
-//   await page.locator('[data-test-id="close-btn"]').click();
+  await pumaLandingPage.getCloseBtnModal.click();
+  await pumaLandingPage.getsliderButton.scrollIntoViewIfNeeded();
+  await pumaLandingPage.getBlockCorusel.hover();
+  await pumaLandingPage.getsliderButton.first().click();
 
-//   await arrowSlide.click();
+  await page.waitForTimeout(1000);
+  const boundingBoxAfter = await pumaLandingPage.getNewElementSlider
+    .first()
+    .boundingBox();
 
-//   await page.waitForTimeout(1000);
-//   const boundingBoxAfter =
-//     await pumaLandingPage.getNewElementSlider.boundingBox();
-
-//   await expect(boundingBoxBefore?.x !== boundingBoxAfter?.x).toBeTruthy();
-// });
-// // //
+  await expect(boundingBoxBefore?.x !== boundingBoxAfter?.x).toBeTruthy();
+});
 
 test("check Select a Location", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getButtonLocation.scrollIntoViewIfNeeded();
@@ -135,7 +125,7 @@ test("check Select a Location", async ({ pumaLandingPage, page }) => {
   ).toBeTruthy();
 });
 
-test("check sale", async ({ pumaLandingPage, page }) => {
+test("check sale", async ({ pumaLandingPage }) => {
   await pumaLandingPage.getButtonSale.click();
   const textDecoration = pumaLandingPage.getTextDecoration;
 

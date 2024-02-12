@@ -29,6 +29,9 @@ export class PumaLandingPage {
   readonly getButtonSale: Locator;
   readonly getCloseCoockieModal: Locator;
   readonly getLinkInsta: Locator;
+  readonly getFooter: Locator;
+  readonly getBlockCorusel: Locator;
+  readonly getCloseBtnModal: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -74,9 +77,9 @@ export class PumaLandingPage {
     this.getsliderButton = page.locator(
       '//*[@data-test-id="chevron-button-right"]'
     );
-    this.getNewElementSlider = page.getByRole("link", {
-      name: "PUMA x LAMELO BALL MB.01 Lo Men's Basketball Shoes, Green Gecko-CASTLEROCK,",
-    });
+    this.getNewElementSlider = page
+      .locator('//*[@data-test-id="recommended-product-item"]')
+      .first();
     this.getElementToScroll = page.getByRole("heading", {
       name: "EXPLORE LAMELO BALL’S",
     });
@@ -95,12 +98,17 @@ export class PumaLandingPage {
       name: "Sale",
       exact: true,
     });
+    this.getFooter = page.locator('//*[@data-test-id="footer-top"]');
     this.getCloseCoockieModal = page.locator(
       '//*[@data-test-id="cookie-banner-close-btn"]'
     );
     this.getLinkInsta = page.locator(
       '//*[@data-test-id="social-instagram-social-link"]'
     );
+    this.getBlockCorusel = page.locator(
+      '//*[@data-test-id="recommendation-product-carousel"]'
+    );
+    this.getCloseBtnModal = page.locator('[data-test-id="close-btn"]');
   }
   async goto() {
     await this.page.goto("https://us.puma.com/us/en");
