@@ -7,15 +7,15 @@ test("get started link", async ({ pumaLandingPage, page }) => {
   await expect(page).toHaveTitle(/Shop All Sport/);
 });
 
-// test("enter text", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getSearchButton.click();
-//   const inputField = pumaLandingPage.setSearchInput;
-//   await inputField.fill("Sneakers");
-//   await pumaLandingPage.getSearchClick.click();
+test("enter text", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getSearchButton.click();
+  const inputField = pumaLandingPage.setSearchInput;
+  await inputField.fill("Sneakers");
+  await pumaLandingPage.getSearchClick.click();
 
-//   await page.waitForSelector("img", { state: "attached" });
-//   await expect(page.getByLabel("Go to Defy Varsity Mid Women'")).toBeVisible();
-// });
+  await page.waitForSelector("img", { state: "attached" });
+  await expect(page.getByLabel("Go to Defy Varsity Mid Women'")).toBeVisible();
+});
 
 // test("check user is not loginned", async ({ pumaLandingPage, page }) => {
 //   await pumaLandingPage.getWishList.click();
