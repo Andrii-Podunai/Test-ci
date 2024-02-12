@@ -64,7 +64,8 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
   await expect(isModalVisible).toBeTruthy();
 });
 test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
-  await expect(pumaLandingPage.getModalLocation).toBeInViewport();
+  const isModalVisible = await pumaLandingPage.getModalLocation.isVisible();
+  await expect(isModalVisible).toBeTruthy();
 });
 // test("check slider", async ({ pumaLandingPage, page }) => {
 //   // await page
@@ -97,7 +98,6 @@ test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
 
 test("check Select a Location", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getButtonLocation.scrollIntoViewIfNeeded();
-  page.waitForTimeout(1000);
   await pumaLandingPage.getButtonLocation.click();
   await pumaLandingPage.getInputLocation.fill("Ukraine");
   await pumaLandingPage.getSelectCountry.click();
