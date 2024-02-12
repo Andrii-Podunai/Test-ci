@@ -47,13 +47,22 @@ test("check autoloading in the page", async ({ pumaLandingPage, page }) => {
   const finalCount = await pumaLandingPage.getProductItem.count();
   expect(finalCount).toBeGreaterThan(initialCount);
 });
-
+test.afterEach(async ({ page }, testInfo) => {
+  if (testInfo.status === "failed") {
+    await page.screenshot({
+      path: `../screenshots/${testInfo.title}.png`,
+      fullPage: true,
+    });
+  }
+});
 test("check modal of feedback", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getButtonFeedback.click();
 
   await expect(pumaLandingPage.getModal).toBeVisible();
 });
-
+test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
+  await expect(pumaLandingPage.getModalLocation).toBeVisible();
+});
 // test("check slider", async ({ pumaLandingPage, page }) => {
 //   // await page
 //   //   .locator('[data-test-id="recommendation-product-carousel"]')
@@ -81,10 +90,7 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 
 //   await expect(boundingBoxBefore?.x !== boundingBoxAfter?.x).toBeTruthy();
 // });
-// //
-test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
-  await expect(pumaLandingPage.getModalLocation).toBeVisible();
-});
+// // //
 
 test("check Select a Location", async ({ pumaLandingPage, page }) => {
   await pumaLandingPage.getButtonLocation.click();
