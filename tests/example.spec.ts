@@ -96,6 +96,8 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 // // //
 
 test("check Select a Location", async ({ pumaLandingPage, page }) => {
+  await page.locator('[data-test-id="close-btn"]').click();
+
   await pumaLandingPage.getButtonLocation.scrollIntoViewIfNeeded();
   await pumaLandingPage.getButtonLocation.click();
   await pumaLandingPage.getInputLocation.fill("Ukraine");
