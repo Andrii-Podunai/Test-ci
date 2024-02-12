@@ -96,12 +96,11 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 // // //
 
 test("check Select a Location", async ({ pumaLandingPage, page }) => {
-  await page.locator('[data-test-id="close-btn"]').click();
-
   await pumaLandingPage.getButtonLocation.scrollIntoViewIfNeeded();
   const visibilityCoockieModal =
     await pumaLandingPage.getCloseCoockieModal.isVisible();
   if (visibilityCoockieModal) {
+    await page.locator('[data-test-id="close-btn"]').click();
     await pumaLandingPage.getCloseCoockieModal.click();
   }
 
