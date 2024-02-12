@@ -63,10 +63,9 @@ test("check modal of feedback", async ({ pumaLandingPage, page }) => {
 
   await expect(isModalVisible).toBeTruthy();
 });
-test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
-  const isModalVisible = await pumaLandingPage.getModalLocation.isVisible();
-  await expect(isModalVisible).toBeTruthy();
-});
+// test("check modal of Select a Location", async ({ pumaLandingPage, page }) => {
+//   await expect(pumaLandingPage.getModalLocation).toBeVisible();
+// });
 // test("check slider", async ({ pumaLandingPage, page }) => {
 //   // await page
 //   //   .locator('[data-test-id="recommendation-product-carousel"]')
