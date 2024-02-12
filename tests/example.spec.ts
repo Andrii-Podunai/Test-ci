@@ -17,19 +17,19 @@ test("enter text", async ({ pumaLandingPage, page }) => {
   await expect(page.getByLabel("Go to Defy Varsity Mid Women'")).toBeVisible();
 });
 
-// test("check user is not loginned", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getWishList.click();
-//   await expect(pumaLandingPage.getForm).toBeVisible();
-// });
-// test("check filters", async ({ pumaLandingPage, page }) => {
-//   await pumaLandingPage.getNavigationListKids.hover();
-//   await pumaLandingPage.getNavifationClassik.click();
+test("check user is not loginned", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getWishList.click();
+  await expect(pumaLandingPage.getForm).toBeVisible();
+});
+test("check filters", async ({ pumaLandingPage, page }) => {
+  await pumaLandingPage.getNavigationListKids.hover();
+  await pumaLandingPage.getNavifationClassik.click();
 
-//   await pumaLandingPage.getButtonSize.click();
-//   await pumaLandingPage.getSizeTen.click();
+  await pumaLandingPage.getButtonSize.click();
+  await pumaLandingPage.getSizeTen.click();
 
-//   await expect(pumaLandingPage.getChoosedFilter).toBeVisible();
-// });
+  await expect(pumaLandingPage.getChoosedFilter).toBeVisible();
+});
 // test("check autoloading in the page", async ({ pumaLandingPage, page }) => {
 //   await pumaLandingPage.getNavigationMan.click();
 //   await page.waitForLoadState();
