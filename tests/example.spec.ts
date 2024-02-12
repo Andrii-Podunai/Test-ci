@@ -89,7 +89,11 @@ test("check slider", async ({ pumaLandingPage, page }) => {
     .first()
     .boundingBox();
 
-  await pumaLandingPage.getCloseBtnModal?.click();
+  const closeBtnModalVisible =
+    await pumaLandingPage.getCloseBtnModal.isVisible();
+  if (closeBtnModalVisible) {
+    await pumaLandingPage.getCloseBtnModal.click();
+  }
   await pumaLandingPage.getsliderButton.scrollIntoViewIfNeeded();
   await pumaLandingPage.getBlockCorusel.hover();
   await pumaLandingPage.getsliderButton.first().click();
