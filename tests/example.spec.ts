@@ -99,6 +99,12 @@ test("check Select a Location", async ({ pumaLandingPage, page }) => {
   await page.locator('[data-test-id="close-btn"]').click();
 
   await pumaLandingPage.getButtonLocation.scrollIntoViewIfNeeded();
+  const visibilityCoockieModal =
+    await pumaLandingPage.getCloseCoockieModal.isVisible();
+  if (visibilityCoockieModal) {
+    await pumaLandingPage.getCloseCoockieModal.click();
+  }
+
   await pumaLandingPage.getButtonLocation.click();
   await pumaLandingPage.getInputLocation.fill("Ukraine");
   await pumaLandingPage.getSelectCountry.click();

@@ -27,6 +27,7 @@ export class PumaLandingPage {
   readonly getSelectCountry: Locator;
   readonly getTextDecoration: Locator;
   readonly getButtonSale: Locator;
+  readonly getCloseCoockieModal: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -34,12 +35,14 @@ export class PumaLandingPage {
       name: "Sport",
       exact: true,
     });
-    this.getSearchButton = page.locator('[data-test-id="search-button-nav"]');
+    this.getSearchButton = page.locator(
+      '//*[@data-test-id="search-button-nav"]'
+    );
     this.setSearchInput = page.locator(
-      '[data-test-id="search-flyout-form-input"]'
+      '//*[@data-test-id="search-flyout-form-input"]'
     );
     this.getSearchClick = page.locator(
-      '[data-test-id="search-flyout-form-submit"]'
+      '//*[@data-test-id="search-flyout-form-submit"]'
     );
     this.getWishList = page.locator("#nav-wishlist-link");
     this.getForm = page.getByText("LoginCreate accountEmail *");
@@ -54,7 +57,7 @@ export class PumaLandingPage {
     this.getButtonSize = page.getByRole("button", { name: "Size" });
     this.getSizeTen = page.locator('[data-test-id="\\31 0-btn"]');
     this.getChoosedFilter = page.locator(
-      '[data-test-id="selected-filter-item"]'
+      '//*[@data-test-id="selected-filter-item"]'
     );
     this.getNavigationMan = page
       .locator("div")
@@ -68,7 +71,7 @@ export class PumaLandingPage {
     this.getModal = page.getByRole("dialog");
 
     this.getsliderButton = page.locator(
-      '[data-test-id="chevron-button-right"]'
+      '//*[@data-test-id="chevron-button-right"]'
     );
     this.getNewElementSlider = page.getByRole("link", {
       name: "PUMA x LAMELO BALL MB.01 Lo Men's Basketball Shoes, Green Gecko-CASTLEROCK,",
@@ -83,14 +86,17 @@ export class PumaLandingPage {
       '//*[@data-test-id="select-location"]'
     );
     this.getInputLocation = page.locator(
-      '[data-test-id="location-selector-input"]'
+      '//*[@data-test-id="location-selector-input"]'
     );
     this.getSelectCountry = page.getByRole("link", { name: "Ukrainian" });
-    this.getTextDecoration = page.locator('[data-test-id="price"]').first();
+    this.getTextDecoration = page.locator('//*[@data-test-id="price"]').first();
     this.getButtonSale = page.getByRole("menuitem", {
       name: "Sale",
       exact: true,
     });
+    this.getCloseCoockieModal = page.locator(
+      '[data-test-id="cookie-banner-close-btn"]'
+    );
   }
   async goto() {
     await this.page.goto("https://us.puma.com/us/en");
