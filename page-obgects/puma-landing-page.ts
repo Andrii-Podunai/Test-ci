@@ -95,7 +95,7 @@ export class PumaLandingPage {
       exact: true,
     });
     this.getCloseCoockieModal = page.locator(
-      '[data-test-id="cookie-banner-close-btn"]'
+      '//*[@data-test-id="cookie-banner-close-btn"]'
     );
   }
   async goto() {
